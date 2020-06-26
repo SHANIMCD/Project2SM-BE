@@ -20,7 +20,7 @@ public class WorkoutBuilderApplication {
 				System.out.println(exDao.findByName("Star jumps"));
 				
 		WorkoutRepo wDao = beanBag.getBean(WorkoutRepo.class);
-		wDao.save(new Workout(0, "new workout", null));
+//		wDao.save(new Workout(0, "new workout", null));
 		System.out.println(wDao.findByTitle("workout One"));
 	}
 
