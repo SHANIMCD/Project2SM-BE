@@ -25,6 +25,14 @@ public class Exercise {
 	@ManyToOne(targetEntity = Workout.class)
 	private Workout workout;
 
+	public Workout getWorkout() {
+		return workout;
+	}
+
+	public void setWorkout(Workout workout) {
+		this.workout = workout;
+	}
+
 	public Exercise(long e_id, String name, String category, String imageMain) {
 		super();
 		this.e_id = e_id;
