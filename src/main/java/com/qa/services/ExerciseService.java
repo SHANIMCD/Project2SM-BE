@@ -1,11 +1,14 @@
 package com.qa.services;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.EntityNotFoundException;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import com.qa.DTO.ExerciseDTO;
 import com.qa.domains.Exercise;
 import com.qa.repos.ExerciseRepo;
 
@@ -13,14 +16,21 @@ import com.qa.repos.ExerciseRepo;
 public class ExerciseService {
 
 	private ExerciseRepo repo;
+	private ModelMapper mapper;
 
-	public ExerciseService(ExerciseRepo repo) {
+	public ExerciseService(ExerciseRepo repo, ModelMapper mapper) {
 		super();
 		this.repo = repo;
+		this.mapper = mapper;
+	}
+	
+	private ExerciseDTO mapToDTO(Exercise exercise) {
+		return this.mapper.map(exercise, ExerciseDTO.class);
 	}
 
-	public Exercise create(Exercise exercise) {
-		return this.repo.save(exercise);
+	public ExerciseDTO create(Exercise exercise) {
+		Exercise saved = this.repo.save(exercise);
+		return this.mapToDTO(saved);
 	}
 
 	public Exercise update(Exercise exercise, Long e_id) {
@@ -33,8 +43,8 @@ public class ExerciseService {
 		return this.repo.save(toUpdate);
 	}
 
-	public List<Exercise> read() {
-		return this.repo.findAll();
+	public List<ExerciseDTO> read() {
+		return this.repo.findAll().stream().map(this::mapToDTO).collect(Collectors.toList());
 	}
 
 	public boolean delete(Long e_id) {
