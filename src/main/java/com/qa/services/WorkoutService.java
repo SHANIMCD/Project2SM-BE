@@ -1,7 +1,6 @@
 package com.qa.services;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.persistence.EntityNotFoundException;
 
@@ -45,9 +44,8 @@ public class WorkoutService {
     }
 	
 	
-	public WorkoutDTO create(@RequestBody Workout workout) {		
-		Workout saved =  this.repo.save(workout);
-		return this.mapToDTO(saved);
+	public Workout create(@RequestBody Workout workout) {		
+		return this.repo.save(workout);
 	}
 		
 	public Workout update(Workout workout, Long id) {
@@ -57,8 +55,8 @@ public class WorkoutService {
 		return this.repo.save(toUpdate);
 	}
 	
-	public List<WorkoutDTO> read() {
-		return this.repo.findAll().stream().map(this::mapToDTO).collect(Collectors.toList());
+	public List<Workout> read() {
+		return this.repo.findAll();
 	}
 	
 	public boolean delete(Long id) {

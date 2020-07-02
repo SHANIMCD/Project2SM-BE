@@ -7,19 +7,16 @@ public class WorkoutDTO {
 	
 	private long id;
 	private String title;
-	private List<ExerciseDTO> exercise;
+	private List<ExerciseDTO> exercises;
 	
-	public WorkoutDTO(long id, String title, List<ExerciseDTO> exercise) {
+	
+	public WorkoutDTO(long id, String title, List<ExerciseDTO> exercises) {
 		super();
 		this.id = id;
 		this.title = title;
-		this.exercise = exercise;
+		this.exercises = exercises;
 	}
 	
-	public WorkoutDTO() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 
 	public long getId() {
 		return id;
@@ -37,21 +34,25 @@ public class WorkoutDTO {
 		this.title = title;
 	}
 
-	public List<ExerciseDTO> getExercise() {
-		return exercise;
+	public List<ExerciseDTO> getExercises() {
+		return exercises;
 	}
 
-	public void setExercise(List<ExerciseDTO> exercise) {
-		this.exercise = exercise;
+	public void setExercises(List<ExerciseDTO> exercises) {
+		this.exercises = exercises;
 	}
 
 	@Override
 	public String toString() {
-		return "WorkoutDTO [id=" + id + ", title=" + title + ", exercise=" + exercise + "]";
+		return "WorkoutDTO [id=" + id + ", title=" + title + ", exercises=" + exercises + "]";
 	}
-	
-	
-	
+
+
+	public WorkoutDTO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 
 
 }
