@@ -13,7 +13,7 @@ public class Exercise {
 	@GeneratedValue
 	long e_id;
 	
-	@Column( name = "name", unique = true, nullable = false)
+	@Column(name = "name", unique = true, nullable = false)
 	String name;
 	
 	@Column(nullable = false)
@@ -25,23 +25,13 @@ public class Exercise {
 	@ManyToOne(targetEntity = Workout.class)
 	private Workout workout;
 
-	public Exercise(long e_id, String name, String category, String imageMain) {
+	public Exercise(long e_id, String name, String category, String imageMain, Workout workout) {
 		super();
 		this.e_id = e_id;
 		this.name = name;
 		this.category = category;
 		this.imageMain = imageMain;
-	}
-
-	public Exercise() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	@Override
-	public String toString() {
-		return "Exercise [e_id=" + e_id + ", name=" + name + ", category=" + category + ", imageMain=" + imageMain
-				+ "]";
+		this.workout = workout;
 	}
 
 	public long getE_id() {
@@ -75,6 +65,25 @@ public class Exercise {
 	public void setImageMain(String imageMain) {
 		this.imageMain = imageMain;
 	}
-		
+
+	public Workout getWorkout() {
+		return workout;
+	}
+
+	public void setWorkout(Workout workout) {
+		this.workout = workout;
+	}
+
+	public Exercise() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "Exercise [e_id=" + e_id + ", name=" + name + ", category=" + category + ", imageMain=" + imageMain
+				+ ", workout=" + workout + "]";
+	}
+
 	
 }
