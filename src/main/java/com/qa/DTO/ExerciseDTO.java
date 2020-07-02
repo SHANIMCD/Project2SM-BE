@@ -57,4 +57,7 @@ public class ExerciseDTO {
 		return "ExerciseDTO [e_id=" + e_id + ", name=" + name + ", category=" + category + ", imageMain=" + imageMain
 				+ "]";
 	}
-}
+	
+	
+	
+	}

@@ -20,7 +20,14 @@ public class Workout {
 	private String title;
 	
 	@OneToMany(mappedBy = "workout")
-	private List<Exercise> exercise;
+	private List<Exercise> exercises;
+
+	public Workout(long id, String title, List<Exercise> exercises) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.exercises = exercises;
+	}
 
 	public long getId() {
 		return id;
@@ -38,12 +45,17 @@ public class Workout {
 		this.title = title;
 	}
 
-	public List<Exercise> getExercise() {
-		return exercise;
+	public List<Exercise> getExercises() {
+		return exercises;
 	}
 
-	public void setExercise(List<Exercise> exercise) {
-		this.exercise = exercise;
+	public void setExercises(List<Exercise> exercises) {
+		this.exercises = exercises;
+	}
+
+	@Override
+	public String toString() {
+		return "Workout [id=" + id + ", title=" + title + ", exercises=" + exercises + "]";
 	}
 
 	public Workout() {
@@ -51,16 +63,7 @@ public class Workout {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Workout(long id, String title, List<Exercise> exercise) {
-		super();
-		this.id = id;
-		this.title = title;
-		this.exercise = exercise;
-	}
-
-
 	
-	
-		
+
 	
 }
