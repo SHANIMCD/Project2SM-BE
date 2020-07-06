@@ -15,7 +15,7 @@ public class WorkoutBuilderApplication {
 		ApplicationContext beanBag =  SpringApplication.run(WorkoutBuilderApplication.class, args);
 		
 		ExerciseRepo exDao = beanBag.getBean(ExerciseRepo.class);
-				exDao.save(new Exercise(0, "Star jumps", "heartrate", "animage", null));
+				exDao.save(new Exercise(0, "Star jumps", "heartrate", "https://thumbs.dreamstime.com/b/jumping-jack-sport-exersice-silhouettes-woman-doing-exercise-workout-training-vector-illustration-jumping-jack-sport-exersice-119786219.jpg", null));
 				System.out.println(exDao.findByName("Star jumps"));
 				
 		WorkoutRepo wDao = beanBag.getBean(WorkoutRepo.class);

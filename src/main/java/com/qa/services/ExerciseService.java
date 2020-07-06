@@ -46,6 +46,10 @@ public class ExerciseService {
 	public List<ExerciseDTO> read() {
 		return this.repo.findAll().stream().map(this::mapToDTO).collect(Collectors.toList());
 	}
+	
+	public Exercise read(Long e_id) {
+		return this.repo.findById(e_id).orElseThrow(() -> new EntityNotFoundException());
+	}
 
 	public boolean delete(Long e_id) {
 		this.repo.deleteById(e_id);

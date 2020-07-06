@@ -3,6 +3,7 @@ package com.qa.controllers;
 import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +16,7 @@ import com.qa.domains.Exercise;
 import com.qa.services.ExerciseService;
 
 @RestController
+@CrossOrigin
 public class ExController { 
 
 	private ExerciseService service;
@@ -32,6 +34,12 @@ public class ExController {
 	@GetMapping("/read")
 	public ResponseEntity<List<ExerciseDTO>> read() {
 		return new ResponseEntity<List<ExerciseDTO>>(this.service.read(), HttpStatus.OK);
+	}
+	
+	
+	@GetMapping("/read/{e_id}")
+	public ResponseEntity<Exercise> readOne(@PathVariable Long e_id) {
+		return ResponseEntity.ok(this.service.read(e_id));
 	}
 	
 	@PutMapping("/update/{e_id}")
