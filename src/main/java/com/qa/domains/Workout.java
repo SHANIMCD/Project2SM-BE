@@ -2,6 +2,7 @@ package com.qa.domains;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,12 +15,11 @@ public class Workout {
 	@Id
 	@GeneratedValue
 	private long id;
-	
-	
+
 	@Column(nullable = false)
 	private String title;
-	
-	@OneToMany(mappedBy = "workout")
+
+	@OneToMany(mappedBy = "workout", cascade = CascadeType.ALL)
 	private List<Exercise> exercises;
 
 	public Workout(long id, String title, List<Exercise> exercises) {
@@ -27,6 +27,16 @@ public class Workout {
 		this.id = id;
 		this.title = title;
 		this.exercises = exercises;
+	}
+
+	public Workout() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "Workout [id=" + id + ", title=" + title + ", exercises=" + exercises + "]";
 	}
 
 	public long getId() {
@@ -53,17 +63,4 @@ public class Workout {
 		this.exercises = exercises;
 	}
 
-	@Override
-	public String toString() {
-		return "Workout [id=" + id + ", title=" + title + ", exercises=" + exercises + "]";
-	}
-
-	public Workout() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	
-
-	
 }

@@ -6,7 +6,7 @@ public class ExerciseDTO {
 	private String name;
 	private String category;
 	private String imageMain;
-	
+
 	public ExerciseDTO(long e_id, String name, String category, String imageMain) {
 		super();
 		this.e_id = e_id;
@@ -57,7 +57,5 @@ public class ExerciseDTO {
 		return "ExerciseDTO [e_id=" + e_id + ", name=" + name + ", category=" + category + ", imageMain=" + imageMain
 				+ "]";
 	}
-	
-	
-	
-	}
+
+}

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.qa.domains.Exercise;
 
 @Repository
-public interface ExerciseRepo extends JpaRepository<Exercise, Long>{
+public interface ExerciseRepo extends JpaRepository<Exercise, Long> {
 
 	List<Exercise> findByName(String name);
 }
