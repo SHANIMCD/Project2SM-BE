@@ -23,8 +23,8 @@ public class ExerciseService {
 		this.repo = repo;
 		this.mapper = mapper;
 	}
-	
-	private ExerciseDTO mapToDTO(Exercise exercise) {
+
+	public ExerciseDTO mapToDTO(Exercise exercise) {
 		return this.mapper.map(exercise, ExerciseDTO.class);
 	}
 
@@ -33,22 +33,22 @@ public class ExerciseService {
 		return this.mapToDTO(saved);
 	}
 
-	public Exercise update(Exercise exercise, Long e_id) {
+	public ExerciseDTO update(Exercise exercise, Long e_id) {
 		Exercise toUpdate = this.repo.findById(e_id).orElseThrow(() -> new EntityNotFoundException());
-		
+
 		toUpdate.setName(exercise.getName());
 		toUpdate.setCategory(exercise.getCategory());
 		toUpdate.setImageMain(exercise.getImageMain());
 		toUpdate.setWorkout(exercise.getWorkout());
-		return this.repo.save(toUpdate);
+		return this.mapToDTO(repo.save(toUpdate));
 	}
 
 	public List<ExerciseDTO> read() {
 		return this.repo.findAll().stream().map(this::mapToDTO).collect(Collectors.toList());
 	}
-	
-	public Exercise read(Long e_id) {
-		return this.repo.findById(e_id).orElseThrow(() -> new EntityNotFoundException());
+
+	public ExerciseDTO read(Long e_id) {
+		return mapToDTO(this.repo.findById(e_id).orElseThrow(() -> new EntityNotFoundException()));
 	}
 
 	public boolean delete(Long e_id) {

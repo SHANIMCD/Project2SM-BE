@@ -17,7 +17,7 @@ import com.qa.services.ExerciseService;
 
 @RestController
 @CrossOrigin
-public class ExController { 
+public class ExController {
 
 	private ExerciseService service;
 
@@ -25,28 +25,27 @@ public class ExController {
 		super();
 		this.service = service;
 	}
-	
+
 	@PostMapping("/create")
 	public ResponseEntity<ExerciseDTO> create(@RequestBody Exercise exercise) {
 		return new ResponseEntity<ExerciseDTO>(this.service.create(exercise), HttpStatus.CREATED);
 	}
-	
+
 	@GetMapping("/read")
 	public ResponseEntity<List<ExerciseDTO>> read() {
 		return new ResponseEntity<List<ExerciseDTO>>(this.service.read(), HttpStatus.OK);
 	}
-	
-	
+
 	@GetMapping("/read/{e_id}")
-	public ResponseEntity<Exercise> readOne(@PathVariable Long e_id) {
+	public ResponseEntity<ExerciseDTO> readOne(@PathVariable Long e_id) {
 		return ResponseEntity.ok(this.service.read(e_id));
 	}
-	
+
 	@PutMapping("/update/{e_id}")
-	public Exercise update(@PathVariable Long e_id, @RequestBody Exercise exercise) {
-		return this.service.update(exercise, e_id);
+	public ResponseEntity<ExerciseDTO> update(@PathVariable Long e_id, @RequestBody Exercise exercise) {
+		return new ResponseEntity<ExerciseDTO>(this.service.update(exercise, e_id), HttpStatus.ACCEPTED);
 	}
-	
+
 	@DeleteMapping("/delete/{e_id}")
 	public boolean delete(@PathVariable Long e_id) {
 		return this.service.delete(e_id);
