@@ -125,10 +125,11 @@ public class Exercise {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Exercise(String name, String category, String imageMain) {
+	public Exercise(String name, String category, String imageMain, Workout workout) {
 		this.name = name;
 		this.category = category;
 		this.imageMain = imageMain;
+		this.workout = workout;
 	}
 
 	@Override

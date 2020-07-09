@@ -29,7 +29,7 @@ public class WorkoutService {
 		this.mapper = mapper;
 	}
 
-	private WorkoutDTO mapToDTO(Workout workout) {
+	public WorkoutDTO mapToDTO(Workout workout) {
 		return this.mapper.map(workout, WorkoutDTO.class);
 	}
 
