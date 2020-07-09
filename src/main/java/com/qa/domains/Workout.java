@@ -34,6 +34,10 @@ public class Workout {
 		// TODO Auto-generated constructor stub
 	}
 
+	public Workout(String string, Object object) {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public String toString() {
 		return "Workout [id=" + id + ", title=" + title + ", exercises=" + exercises + "]";
