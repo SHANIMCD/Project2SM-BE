@@ -18,51 +18,54 @@ import com.qa.repos.WorkoutRepo;
 public class WorkoutService {
 
 	private WorkoutRepo repo;
-	
+
 	private ExerciseRepo exRepo;
 
 	private ModelMapper mapper;
-	
+
 	public WorkoutService(WorkoutRepo repo, ModelMapper mapper) {
 		super();
 		this.repo = repo;
 		this.mapper = mapper;
 	}
-	
-	private WorkoutDTO mapToDTO(Workout workout) {
+
+	public WorkoutDTO mapToDTO(Workout workout) {
 		return this.mapper.map(workout, WorkoutDTO.class);
 	}
-	
+
 	public WorkoutDTO createWorkout(Workout workout) {
-        Workout saved = this.repo.save(workout);
-        saved.getExercises().stream().map(ex -> this.exRepo.findById(ex.getE_id()).orElseThrow(EntityNotFoundException::new))
-        .forEach(ex -> {
-        	ex.setWorkout(saved);
-        	this.exRepo.save(ex);
-        });
-        return this.mapToDTO(saved);
-    }
-	
-	
-	public WorkoutDTO create(@RequestBody Workout workout) {		
+		Workout saved = this.repo.save(workout);
+		saved.getExercises().stream()
+				.map(ex -> this.exRepo.findById(ex.getE_id()).orElseThrow(EntityNotFoundException::new)).forEach(ex -> {
+					ex.setWorkout(saved);
+					this.exRepo.save(ex);
+				});
+		return this.mapToDTO(saved);
+	}
+
+	public WorkoutDTO create(@RequestBody Workout workout) {
 		Workout saved = this.repo.save(workout);
 		return this.mapToDTO(saved);
 	}
-		
-	public Workout update(Workout workout, Long id) {
+
+	public WorkoutDTO update(Workout workout, Long id) {
 		Workout toUpdate = this.repo.findById(id).orElseThrow(() -> new EntityNotFoundException());
 		toUpdate.setTitle(workout.getTitle());
-		toUpdate.setExercises(workout.getExercises());	
-		return this.repo.save(toUpdate);
+		toUpdate.setExercises(workout.getExercises());
+		return this.mapToDTO(repo.save(toUpdate));
 	}
-	
+
 	public List<WorkoutDTO> read() {
 		return this.repo.findAll().stream().map(this::mapToDTO).collect(Collectors.toList());
 	}
-	
+
+	public WorkoutDTO read(Long id) {
+		return mapToDTO(this.repo.findById(id).orElseThrow(() -> new EntityNotFoundException()));
+	}
+
 	public boolean delete(Long id) {
 		this.repo.deleteById(id);
 		return this.repo.existsById(id);
 	}
-	
+
 }
