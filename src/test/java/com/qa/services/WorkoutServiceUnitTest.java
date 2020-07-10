@@ -29,6 +29,7 @@ public class WorkoutServiceUnitTest {
 	private final Workout workout = new Workout("morning blast", null);
 	
 	private Workout savedWorkout;
+	private Workout savedWorkoutWID;
 	private WorkoutDTO wkDTO;
 	private List<Workout> woList;
 	
@@ -46,10 +47,11 @@ public class WorkoutServiceUnitTest {
 	@Before
 	public void init() {
 		this.woList = new ArrayList<>();
-		this.woList.add(workout);
-		this.savedWorkout = new Workout(workout.getTitle(), workout.getExercises());
-		this.savedWorkout.setId(1);
-		this.wkDTO = new ModelMapper().map(savedWorkout, WorkoutDTO.class);
+		this.savedWorkout = new Workout("morning blast", null);
+		this.woList.add(savedWorkout);
+		this.savedWorkoutWID = new Workout(workout.getTitle(), workout.getExercises());
+		this.savedWorkoutWID.setId(id);
+		this.wkDTO = new ModelMapper().map(savedWorkoutWID, WorkoutDTO.class);
 	}
 	
 	@Test
@@ -75,9 +77,29 @@ public class WorkoutServiceUnitTest {
 	@Test
 	public void ListWorkoutsTest() {
 		Mockito.when(this.repo.findAll()).thenReturn(this.woList);
-		when(this.mapper.map(woList, Workout.class)).thenReturn(savedWorkout);
+//		when(this.mapper.map(woList, Workout.class)).thenReturn(savedWorkout);
 		
 		assertFalse("No Workouts found", this.service.read().isEmpty());
 		verify(this.repo, times(1)).findAll();
 	}
+	
+	@Test
+	public void updateWoTest() {
+		Workout newWorkout = new Workout("front raises", null);
+		Workout updatedWorkout = new Workout(newWorkout.getTitle(), newWorkout.getExercises());
+		updatedWorkout.setId(this.id);
+		
+		WorkoutDTO updatedDTO = new ModelMapper().map(updatedWorkout, WorkoutDTO.class);
+		
+		when(this.repo.findById(this.id)).thenReturn(Optional.of(this.savedWorkoutWID));
+		when(this.mapper.map(updatedWorkout, WorkoutDTO.class)).thenReturn(updatedDTO);
+		
+		when(this.repo.save(updatedWorkout)).thenReturn(updatedWorkout);
+		
+		assertEquals(updatedDTO, this.service.update(newWorkout, this.id));
+		
+		verify(this.repo, times(1)).findById(1L);
+		verify(this.repo, times(1)).save(updatedWorkout);
+	}
+	
 }
