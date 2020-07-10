@@ -32,6 +32,7 @@ public class ExerciseServiceUnitTest {
 	private final Exercise exercise = new Exercise("squat", "strength", "anImage", null);
 	
 	private Exercise savedExercise;
+	private Exercise savedExerciseWID;
 	
 	private ExerciseDTO exDTO;
 	
@@ -52,10 +53,11 @@ public class ExerciseServiceUnitTest {
 	@Before
 	public void init() {
 		this.exList = new ArrayList<>();
-		this.exList.add(exercise);
-		this.savedExercise = new Exercise(exercise.getName(), exercise.getCategory(), exercise.getImageMain(), exercise.getWorkout());
-		this.savedExercise.setE_id(1);
-		this.exDTO = new ModelMapper().map(savedExercise, ExerciseDTO.class);
+		this.savedExercise = new Exercise("squat", "strength", "anImage", null);
+		this.exList.add(savedExercise);
+		this.savedExerciseWID = new Exercise(exercise.getName(), exercise.getCategory(), exercise.getImageMain(), exercise.getWorkout());
+		this.savedExerciseWID.setE_id(e_id);
+		this.exDTO = new ModelMapper().map(savedExerciseWID, ExerciseDTO.class);
 	}
 	
 	@Test
@@ -79,8 +81,8 @@ public class ExerciseServiceUnitTest {
 	
 	@Test
 	public void readExercisesTest() {
-		Mockito.when(this.repo.findAll()).thenReturn(this.exList);
-		when(this.mapper.map(exList, Exercise.class)).thenReturn(savedExercise);
+		when(this.repo.findAll()).thenReturn(this.exList);
+//		when(this.mapper.map(savedExerciseWID, ExerciseDTO.class)).thenReturn(exDTO);
 		
 		assertFalse("No exercises found", this.service.read().isEmpty());
 		verify(this.repo, times(1)).findAll();
@@ -91,11 +93,15 @@ public class ExerciseServiceUnitTest {
 		Exercise newEx = new Exercise("front raises", "strength", "image", null);
 		Exercise updatedEx = new Exercise(newEx.getName(), newEx.getCategory(), newEx.getImageMain(), newEx.getWorkout());
 		updatedEx.setE_id(1L);
+		
 		ExerciseDTO newDTO = new ModelMapper().map(updatedEx, ExerciseDTO.class);
-		when(this.repo.findById(this.e_id)).thenReturn(Optional.of(savedExercise));
+		
+		when(this.repo.findById(this.e_id)).thenReturn(Optional.of(savedExerciseWID));
 		when(this.mapper.map(updatedEx, ExerciseDTO.class)).thenReturn(newDTO);
+		
 		when(this.repo.save(updatedEx)).thenReturn(updatedEx);
-		assertEquals(updatedEx, this.service.update(newEx, this.e_id));
+		
+		assertEquals(newDTO, this.service.update(newEx, this.e_id));
 		verify(this.repo, times(1)).findById(1L);
 		verify(this.repo, times(1)).save(updatedEx);
 	}
