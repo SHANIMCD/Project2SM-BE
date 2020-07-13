@@ -16,7 +16,7 @@ public class Workout {
 	@GeneratedValue
 	private long id;
 
-	@Column(nullable = false)
+	@Column
 	private String title;
 
 	@OneToMany(mappedBy = "workout", cascade = CascadeType.ALL)
