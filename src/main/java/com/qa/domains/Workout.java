@@ -34,13 +34,8 @@ public class Workout {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Workout(String string, Object object) {
+	public Workout(String title, Object object) {
 		// TODO Auto-generated constructor stub
-	}
-
-	@Override
-	public String toString() {
-		return "Workout [id=" + id + ", title=" + title + ", exercises=" + exercises + "]";
 	}
 
 	public long getId() {
@@ -65,6 +60,11 @@ public class Workout {
 
 	public void setExercises(List<Exercise> exercises) {
 		this.exercises = exercises;
+	}
+
+	@Override
+	public String toString() {
+		return "Workout [id=" + id + ", title=" + title + ", exercises=" + exercises + "]";
 	}
 
 	@Override
@@ -100,7 +100,7 @@ public class Workout {
 			return false;
 		return true;
 	}
-	
+
 	
 
 }
