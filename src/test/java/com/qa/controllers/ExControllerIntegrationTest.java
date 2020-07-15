@@ -1,5 +1,12 @@
 package com.qa.controllers;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.request;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -68,6 +75,37 @@ public class ExControllerIntegrationTest {
 		ResultMatcher matchContent = MockMvcResultMatchers.content().json(this.objectMapper.writeValueAsString(exDTO));
 		this.mockMvc.perform(mRequest).andExpect(matchStatus).andExpect(matchContent);
 	}
+	
+	@Test
+	public void deleteExTest() throws Exception {
+		this.mockMvc.perform(request(HttpMethod.DELETE, "/delete/" + this.e_id)).andExpect(status().isNoContent());
+	}
+	
+	@Test
+	public void getAllExs() throws Exception {
+		List<ExerciseDTO> exList = new ArrayList<>();
+		exList.add(this.exDTO);
+		String content = this.mockMvc.perform(request(HttpMethod.GET, "/read").accept(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
+		
+		assertEquals(this.objectMapper.writeValueAsString(exList), content);
+	}
+	
+	@Test
+	public void updateExTest() throws Exception {
+		Exercise newEx = new Exercise("front raises", "strength", "image", null);
+		Exercise updatedEx = new Exercise(newEx.getName(), newEx.getCategory(), newEx.getImageMain(), newEx.getWorkout());
+		updatedEx.setE_id(e_id);
+		
+		String result = this.mockMvc
+				.perform(request(HttpMethod.PUT, "/update/" + this.e_id).accept(MediaType.APPLICATION_JSON)
+						.contentType(MediaType.APPLICATION_JSON).content(this.objectMapper.writeValueAsString(newEx)))
+				.andExpect(status().isAccepted()).andReturn().getResponse().getContentAsString();
+		
+		assertEquals(this.objectMapper.writeValueAsString(this.mapToDTO(updatedEx)), result);
+	}
+	
+	
 	
 	
 
