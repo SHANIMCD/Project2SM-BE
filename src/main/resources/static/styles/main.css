@@ -1,0 +1,204 @@
+* {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    scroll-behavior: smooth;
+}
+
+.home-section {
+    height: 100vh;
+    background-image: url('https://images.unsplash.com/photo-1434596922112-19c563067271?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    animation: slideBg 20s linear infinite 0s;
+    animation-timing-function: ease-in-out;
+    backface-visibility: hidden;
+}
+
+@keyframes slideBg {
+    0% { background-image: url('https://images.unsplash.com/photo-1434596922112-19c563067271?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80'); }
+    25% { background-image: url('https://images.unsplash.com/photo-1565349478421-5e1abedadbec?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80'); }
+    55% { background-image: url('https://images.unsplash.com/photo-1575052814086-f385e2e2ad1b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80'); }
+    85% { background-image: url('https://images.unsplash.com/photo-1517931524326-bdd55a541177?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80'); }
+}
+
+
+
+.home-title {
+    font-size: 70px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    color: white;
+    padding: 1%;
+    border: 2px solid white;
+}
+
+.nav-foot-style {
+    background-color: black;
+    color: white;
+}
+
+nav {
+    height: inherit;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap; 
+}
+
+footer {
+    position: static;
+    display: flex;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+}
+
+
+nav a {
+    text-transform: uppercase;
+    border: 1px solid white;
+    font-size: large;
+    font-weight: 800;
+    padding: 6px 30px;
+    margin: 20px;
+}
+
+.index-section {
+    height: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    background-color: #e9e9e9;
+    overflow-y: scroll;
+}
+
+.sec-none {
+    display: none;
+}
+
+.item-box {
+    margin: 5px;
+    background-color: black;
+    width: 250px;
+    height: 200px;
+}
+
+.index-section h2 {
+    text-align: center;
+}
+
+.ex-container {
+    /* padding-top: 220px; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* border: 2px solid black; */
+    align-content: center;
+    margin-right: 10px;
+    max-height: fit-content;
+    
+}
+
+.eachex {
+    border-radius: 5px;
+    font-size: small;
+    text-transform: uppercase;
+    text-align: center;
+    border: 2px solid black;
+    padding: 10px;
+    margin: 5px;
+}
+
+.ex-image {
+    max-height: 200px;
+    max-width: 200px;
+}
+
+/* Individual Exercise Section */
+#ex-ind {
+    height: 300px;
+    text-transform: uppercase;
+    align-items: center;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+#ex-ind h3, h4 {
+    font-size: small;
+}
+
+
+
+/* Beginning Add Exercise section  */
+
+.add-ex-sect {
+    height: 45vh;
+    background-color: #fdeabf;
+    
+}
+
+#ex-form {
+    display: flex;
+    flex-direction: column;
+    /* padding: 10% 0; */
+}
+
+
+#ex-form input {
+    height: 30px;
+    text-align: center;
+    margin: 10px;
+}
+
+#ex-form select {
+    height: 30px;
+    text-align: center;
+    margin: 10px;
+}
+
+
+button {
+    max-width: fit-content;
+    padding: 5px 20px;
+    border-radius: 5px;
+    margin: auto;
+}
+
+/* End of Add Exercise section  */
+
+
+/* Update Exercise section */
+
+
+
+/* Build Workout section  */
+
+.build-work-section {
+    background-color:#b6c5bf;
+    height: 40vh;
+}
+
+.woContainer {
+ 
+    border-radius: 5px;
+    font-size: small;
+    text-transform: uppercase;
+    /* text-align: center; */
+    border: 1px solid black;
+    /* padding: 5px; */
+    margin: 5px;
+}
+
+.build-title {
+    font-size: 40px;
+    text-align: center;
+}
+
+/* End of Build Workout section  */
