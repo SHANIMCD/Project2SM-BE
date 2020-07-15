@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
+    <title>Workout Builder</title>
+</head>
+
+<body>
+    <section class="home-section">
+        <h1 class="home-title">
+            Workout Builder
+        </h1>
+        <a href="#nav"><img height="80px" text-decoration="white"
+                src="https://cdn.iconscout.com/icon/free/png-256/double-down-arrow-861727.png" /></a>
+    </section>
+    <nav class="nav-foot-style" id="nav">
+        <!-- <a href="#add-ex" id="add-ex-link">Add an exercise</a> -->
+        <a href="#index" id="showlist">List Exercises</a>
+        <a href="#build-work" id="buildButton">Build a Workout</a>
+    </nav>
+    <section id="build-work" class="build-work-section">
+        
+        <div id="cWoForm">
+            <h2>Create workout</h2>
+            <label for="addTitle">Title: </label>
+            <input id="addTitle" name="title"/>
+            <button type="button" id="createWO">ADD WORKOUT</button>
+            <pre id="crWO"></pre>
+        </div>
+        <div id="updateWo"></div>
+
+        <div id="updateWoForm">
+            <h3>update</h3>
+            <label for="updateTitle">Title: </label>
+            <input id="updateTitle" value="" name="title"/>
+            <button type="button" id="updateWoBtn">UPDATE</button>
+            
+        </div>
+    </section>
+    <section id="add-ex" class="add-ex-sect">
+        <div id="ex-form">
+            <h2>Create Exercise</h2>
+            <label for="addName">Name: </label>
+            <input id="addName" name="name" />
+            <select id="catSelect" name="category">
+                <option value="select">select a category</option>
+                <option value="heartrate">heart rate</option>
+                <option value="strength">strength</option>
+                <option value="holistic">holistic</option>
+            </select>
+            <label for="addImage">Image: </label>
+            <input id="addImage" name="imageMain" />
+            <div id="ex-form-add-workout" name="workout">
+                <label for="addWorkoutID">Workout ID: </label>
+                <input id="addWorkoutID" value="" name="id" />
+            </div>
+           
+            <button type="button" id="submitButton">SUBMIT</button>
+            <pre id="addToWorkout"></pre>
+        </div>
+    </section>
+
+    <section id="index" class="index-section">
+        <div id="ex-index" class="ex-container"></div>
+        <div id="ex-ind">
+            <h2>Click an exercise</h2>
+            <div></div>
+        </div>
+        <div id="updateEx">
+            <div id="update-ex-form">
+                <label for="updateName">Name: </label>
+                <input id="updateName" value="" name="name" />
+                <select id="updateCatSelect" value="" name="category">
+                    <option value="select">select a category</option>
+                    <option value="heartrate">heart rate</option>
+                    <option value="strength">strength</option>
+                    <option value="holistic">holistic</option>
+                </select>
+                <label for="updateImage">Image: </label>
+                <input id="updateImage" value="" name="imageMain" />
+                <label for="updateWorkoutID">Workout ID: </label>
+                <input id="updateWorkoutID" value="" name="id"/>
+                <button type="button" id="updateButton">UPDATE</button>
+        </div>
+        </div>
+    </section>
+    
+    
+    <footer class="nav-foot-style">
+        <p>Made with ❤️ by Shani McDonald</p>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <script src="./scripts/app.js"></script>
+    <script src="./scripts/addExercise.js"></script>
+    <script src="./scripts/buildWorkout.js"></script>
+    <script src="./scripts/read.js"></script>
+    <script src="./scripts/exDetails.js"></script>
+
+</body>
+
+</html>

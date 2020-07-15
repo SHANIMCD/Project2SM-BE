@@ -55,7 +55,7 @@ public class WorkoutServiceUnitTest {
 	}
 	
 	@Test
-	public void testWOCreate() {
+	public void testWOCreate() {	
 		Mockito.when(this.repo.save(workout)).thenReturn(savedWorkout);
 		assertEquals(this.service.mapToDTO(savedWorkout), service.create(workout));
 	}
@@ -77,7 +77,6 @@ public class WorkoutServiceUnitTest {
 	@Test
 	public void ListWorkoutsTest() {
 		Mockito.when(this.repo.findAll()).thenReturn(this.woList);
-//		when(this.mapper.map(woList, Workout.class)).thenReturn(savedWorkout);
 		
 		assertFalse("No Workouts found", this.service.read().isEmpty());
 		verify(this.repo, times(1)).findAll();

@@ -1,3 +1,4 @@
+package com.qa;
 
 
 import org.junit.jupiter.api.Test;

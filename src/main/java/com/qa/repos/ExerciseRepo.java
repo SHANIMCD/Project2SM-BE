@@ -7,6 +7,6 @@ import com.qa.domains.Exercise;
 
 @Repository
 public interface ExerciseRepo extends JpaRepository<Exercise, Long> {
-
+	
 	List<Exercise> findByName(String name);
 }
