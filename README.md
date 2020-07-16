@@ -19,14 +19,15 @@ The following steps will get the project up and running on your local machine fo
 ## Installation
 In your terminal, please run the following commands:
 ```
-- $git clone https://github.com/SHANIMCD/Project2SM-BE.git
-- To start: $mvn spring-boot:run
-- To stop: $mvn spring-boot:stop
+- $ git clone https://github.com/SHANIMCD/Project2SM-BE.git
+- cd Project2SM-BE
+- To start: $ mvn spring-boot:run
+- Navigate to: http://localhost:8081/ - in your web browser
 ```
 
-# Running the tests
+# To run the tests
 ```
-$mvn test
+$ mvn test
 ```
 
 # Built with
