@@ -3,44 +3,47 @@ Coverage 49%
 # Workout Builder
 ## Project 2 by Shani McDonald
 
-### The workout builder is based of a workout entity which holds one or many exercises.  Create a workout first, then click on the name of the workout you created to select the option of adding an exercise. 
+#### Using the tools learned during our training, my task was to create a full stack hobby project which would include:
+- Two entities that can be modelled into a one to many relationship
+- The creation of an API with CRUD functionality
+- Performing the various CRUD functions from a web browswer (Frontend)
 
 # Getting started
-The following steps will get the project up and running on your local machine for viewing and testing purposes.
+The following steps will get the project up and running on your local machine for viewing and testing purposes:
 
 ## Prerequisites
 ```
-Prerequisites to go here
+- Java
+- Maven
 ```
 ## Installation
 In your terminal, please run the following commands:
 ```
-Commands to go here
+- $git clone https://github.com/SHANIMCD/Project2SM-BE.git
+- To start: $mvn spring-boot:run
+- To stop: $mvn spring-boot:stop
 ```
 
 # Running the tests
-
-## Unit Tests
 ```
-info here
+$mvn test
 ```
 
-## Integration Tests
+# Built with
+- Backend: Java, Spring Tools Suite
+- Frontend: JavaScript, HTML, CSS
+- Testing: JUnit, Mockito
+- Rest Client: Postman
+
+# Version Control
 ```
-info here
+- Git
 ```
 
 ## Static Analysis
 ```
-info here
+- SonarQube
 ```
-
-# Built with
-- Spring Tools Suite
-- JavaScript, HTML, CSS on Frontend
-
-# Version Control
-- Git
 
 # Author
 - Shani McDonald
